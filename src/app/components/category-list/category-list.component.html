@@ -1,0 +1,31 @@
+<h1 class="display-6">
+{{ title }}
+</h1>
+
+<ul class="list-group">
+  <!-- <button
+routerLink="/"
+(click)="onSelectedCategory(null)"
+class="list-group-item text-start"
+[ngClass]="{active:isSelectedCategory(null)}"
+>
+All
+</button> -->
+  <button 
+  *ngFor="let categoryListItem of categoriesListItems" 
+
+  [routerLink]="
+  categoryListItem.value===null
+  ? '/' 
+  :'/category/'+categoryListItem.value"
+  
+  class="list-group-item text-start" 
+  [ngClass]="{active:isSelectedCategory(categoryListItem.value)}"
+  >
+  <!-- [routerLink]="'category/'+category.id" veya [routerLink]="['category',category.id]" da olabilir. -->
+  <!-- (click)="onSelectedCategory(categoryListItem.value)" -->
+<!-- routerLinklerde başında / olmazsa o an ki routh pathine ekleme yapar, routerLink / ile başladığı
+takdirde alan adından(localhost:4200) itibaren verdiğimiz route pathini ekleyecek şekilde değiştirir -->
+    {{ categoryListItem.label }}
+  </button>
+</ul>
